@@ -6,8 +6,8 @@ WORKDIR /app
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
 
-# Install build dependencies for compiling packages like numpy and tensorflow
-RUN apk add --no-cache build-base libclang
+# Install build dependencies
+RUN apk add --no-cache build-base clang
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
