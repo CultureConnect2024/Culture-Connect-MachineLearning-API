@@ -1,10 +1,13 @@
-FROM python:3.12
+FROM python:3.11-alpine
 
 # Set working directory inside container
 WORKDIR /app
 
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
+
+# Install build dependencies for compiling packages like numpy and tensorflow
+RUN apk add --no-cache build-base libclang
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
