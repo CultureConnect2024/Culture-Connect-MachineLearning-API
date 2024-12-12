@@ -1,13 +1,10 @@
-FROM python:3.12-alpine
+FROM python:3.12
 
 # Set working directory inside container
 WORKDIR /app
 
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
-
-# Install dependencies for running FastAPI (and for building other dependencies)
-RUN apk add --no-cache build-base
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
