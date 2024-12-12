@@ -1,25 +1,22 @@
-FROM python:3.12.0
+FROM python:3.12
 
-# Set working directory
+
+# Set working directory inside container
 WORKDIR /app
 
-# Upgrade pip, setuptools, and wheel to the latest versions
-RUN pip install --upgrade pip setuptools wheel
+# Upgrade pip to latest version
+RUN pip install --upgrade pip
 
-# Install build tools
-RUN apt-get update && apt-get install -y build-essential libffi-dev libssl-dev python3-dev cargo
-
-# Copy requirements file
+# Copy requirements.txt and install dependencies
 COPY requirements.txt .
 
-# Install dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
+# Copy the rest of the application code
 COPY . .
 
-# Expose the port that your app will run on
+# Expose the port that FastAPI will run on
 EXPOSE 8080
 
-# Start the application with Uvicorn
+# Set the entrypoint to run the FastAPI app using Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
