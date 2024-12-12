@@ -1,24 +1,22 @@
-FROM python:3.12-alpine
+FROM python:3.9.13-slim
 
-# Set working directory inside container
+# Set working directory
 WORKDIR /app
 
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
 
-# Install build dependencies
-RUN apk add --no-cache build-base clang
-
-# Copy requirements.txt and install dependencies
+# Copy requirements file
 COPY requirements.txt .
 
+# Install dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
+# Copy the application code
 COPY . .
 
-# Expose the port that FastAPI will run on
+# Expose the port that your app will run on
 EXPOSE 8080
 
-# Set the entrypoint to run the FastAPI app using Uvicorn
+# Start the application with Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
