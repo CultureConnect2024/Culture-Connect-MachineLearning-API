@@ -6,6 +6,9 @@ WORKDIR /app
 # Upgrade pip to latest version
 RUN pip install --upgrade pip
 
+# Install distutils, which is required by setuptools
+RUN apt-get update && apt-get install -y python3-distutils
+
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
 
