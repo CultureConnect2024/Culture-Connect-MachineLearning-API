@@ -3,16 +3,16 @@ FROM python:3.12.0
 # Set working directory
 WORKDIR /app
 
-# Upgrade pip to the latest version
-RUN pip install --upgrade pip
+# Upgrade pip, setuptools, and wheel to the latest versions
+RUN pip install --upgrade pip setuptools wheel
 
 # Install build tools
-RUN apt-get update && apt-get install -y build-essential libssl-dev libffi-dev python3-dev cargo
+RUN apt-get update && apt-get install -y build-essential libffi-dev libssl-dev python3-dev cargo
 
 # Copy requirements file
 COPY requirements.txt .
 
-# Install dependencies
+# Install dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
