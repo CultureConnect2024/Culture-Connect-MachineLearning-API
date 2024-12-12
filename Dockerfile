@@ -6,10 +6,13 @@ WORKDIR /app
 # Upgrade pip to the latest version
 RUN pip install --upgrade pip
 
+# Install build tools
+RUN apt-get update && apt-get install -y build-essential libssl-dev libffi-dev python3-dev cargo
+
 # Copy requirements file
 COPY requirements.txt .
 
-# Install dependencies from requirements.txt
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
