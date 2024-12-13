@@ -149,38 +149,15 @@ Predict Mood Data From Text Input.
 
 ### 2. Fetch Cafe Data Endpoint
 #### `GET /get_all_cafe_data`
-Predict Mood Data From Text Input.
+Get All Data Cafe Recomendations.
+**Response:**
+- **200 OK** - If get data succesffully.
+- **404 Not Found** - If the  data not found.
   ```bash
 {
     "Cafe Data": [
         {
             "Page_URL": "<google maps url",
-          "Title": "<cafe title>",
-          "Rating": "<rating cafe>",
-          "Reviews": "<cafe reviews count>",
-          "Address": "<cafe address>",
-          "Phone_Number": "<cafe phone number's",
-          "Price": "<price range>",
-          "Category": "<place category>",
-          "Jadwal": "<cafe-data-schedule>",
-          "Plus_code": "<plus code>",
-          "image": "<image url>",
-          "Opsi_Layanan": "<cafe service option>",
-          "Penawaran": "<additional service from cafe>",
-          "Pilihan_Makanan": "Type Of Food",
-          "Fasilitas": "Cafe facilities",
-          "Suasana": "cafe environment",
-          "Tipe_pengunjung": "Type Of Guest",
-          "Perencanaan": "Planing",
-          "Pembayaran": "<type of order payments>",
-          "anak_anak": "<children only or not",
-          "Parkir": "<Parking Rules"
-      },
-      "Quote": "<Quote Moods",
-      "Today's word for you": "<Input text from users>""
-        },
-      {
-          "Page_URL": "<google maps url",
           "Title": "<cafe title>",
           "Rating": "<rating cafe>",
           "Reviews": "<cafe reviews count>",
